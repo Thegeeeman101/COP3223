@@ -44,6 +44,8 @@ int main()
     printf("\n\tMIDTERM1\t: %.2f", mdOneScore);
     printf("\n\tMIDTERM2\t: %.2f", mdTwoScore);
     printf("\n\tFINAL\t\t: %.2f", finalScore);
+    averageScore = (hwScore * 0.2) + (prScore * 0.2) + (lbScore * 0.05) + ((mdOneScore + mdTwoScore + finalScore) / 3 * 0.55);
+    
     printf("\n------------------------------------");
     printf("\nOVERALL AVERAGE : %.2f", averageScore );
     printf("\n(%.2f*.2 + %.2f*.2 + %.2f*.05 + (%.2f+%.2f+%.2f)*.55/3 is %.2f", hwScore, prScore, lbScore, mdOneScore, mdTwoScore, finalScore, averageScore);
