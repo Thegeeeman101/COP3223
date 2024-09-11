@@ -9,7 +9,7 @@ int main()
     float mdTwoScore = 0.0;
     float finalScore = 0.0;
     float averageScore = 0.0;
-    char letterGrade;
+    char letterGrade[2];
     int counter = 0;
 
     printf("Enter the hw average score: ");
@@ -54,55 +54,62 @@ int main()
     {
         if(averageScore > 93.5)
         {
-            letterGrade = 'A';
+            letterGrade[0] = 'A';
         }
         else if(averageScore > 89.5)
         {
-            letterGrade = 'A-';
+            letterGrade[0] = 'A';
+            letterGrade[1] = '-';
         }
         else if(averageScore > 86.5)
         {
-            letterGrade = 'B+';
+            letterGrade[0] = 'B';
+            letterGrade[1] = '+';
         }
         else if(averageScore > 83.5)
         {
-            letterGrade = 'B';
+            letterGrade[0] = 'B';
         }
         else if(averageScore > 79.5)
         {
-            letterGrade = 'B-';
+            letterGrade[0] = 'B';
+            letterGrade[1] = '-';
         }
         else if(averageScore > 76.5)
         {
-            letterGrade = 'C+';
+            letterGrade[0] = 'C';
+            letterGrade[1] = '+';
         }
         else if(averageScore > 73.5)
         {
-            letterGrade = 'C';
+            letterGrade[0] = 'C';
         }
         else if(averageScore > 69.5)
         {
-            letterGrade = 'C-';
+            letterGrade[0] = 'C';
+            letterGrade[1] = '-';
         }
         else if(averageScore > 66.5)
         {
-            letterGrade = 'D+';
+            letterGrade[0] = 'D';
+            letterGrade[1] = '+';
         }
         else if(averageScore > 63.5)
         {
-            letterGrade = 'D';
+            letterGrade[0] = 'D';
         }
         else if(averageScore > 60.5)
         {
-            letterGrade = 'D-';
+            letterGrade[0] = 'D';
+            letterGrade[1] = '-';
         }
         else
         {
-            letterGrade = 'F';
+            letterGrade[0] = 'F';
         }
     }
 
-    printf("\n\n\t\tFINAL LETTER GRADE: %c\n", letterGrade);
+    printf("\n\n\t\tFINAL LETTER GRADE: %s\n", letterGrade);
 
 
 
