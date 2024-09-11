@@ -1,7 +1,11 @@
 #include <stdio.h>
+// jason gouws, griffin morgan, david jerome
 
 int main()
 {
+    char = tryAgain = 'Y';
+    while (tryAgain == 'Y'|| tryAgain == 'y')
+    {
     float hwScore = 0.0;
     float prScore = 0.0;
     float lbScore = 0.0;
@@ -112,7 +116,21 @@ int main()
     }
 
     printf("\n\n\t\tFINAL LETTER GRADE: %s\n", letterGrade);
+     printf("\nWould you like try again? (Y/N): ");
+     scanf(" %c", &tryAgain);
+        
+        
+     while (tryAgain != 'Y' && tryAgain != 'y' && tryAgain != 'N' && tryAgain != 'n')
+     {
+            printf("Invalid input. Please enter Y or N: ");
+            scanf(" %c", &tryAgain);
+     }
+ 
 
-
-
+   
 }
+    
+
+
+
+
