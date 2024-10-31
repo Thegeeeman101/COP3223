@@ -1,6 +1,11 @@
 //unit6.hw
+//Group members: Jason Gouws, Griffin Morgan, David Jerome
 
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 char most_occuring_character ( char *str);
 void count_low_up_digit ( char *str, int *lower, int *upper , int *digit);
@@ -17,7 +22,21 @@ void count_low_up_digit ( char *str, int *lower, int *upper , int *digit)
 }
 char * Up_letters ( char *str)
 {
-    //Your code goes here
+    int i, x = 0, y = 0;
+    char *cap;
+    cap = malloc (strlen(str) * sizeof(char));
+    for(i = 0; i < strlen(str); i++)
+    {
+        if(str[i] >= 'A' && str[i] <= 'Z')
+        {
+            cap[y] = str[i];
+            y++;
+        }
+    }
+
+    cap[y] = '\0';
+
+    return cap;
 }
 
 
@@ -25,7 +44,8 @@ char * Up_letters ( char *str)
 //the following main function is to remain UNCHANGED!
 
 
-int main() {
+int main() 
+{
     char str[50] ="";
     char *upper_sorted;
     char most_occur = -1;
