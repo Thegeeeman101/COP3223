@@ -14,7 +14,28 @@ char * Up_letters ( char *str);
 
 char most_occuring_character ( char *str)
 {
-    //Your code goes here
+    char most_occur = '\0';
+    int maxCount = 0;
+    int count = 0;
+
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        count = 0;
+        for (int j = 0; str[j] != '\0'; j++)
+        {
+            if(str[i] == str[j])
+            {
+                count++;
+            }
+
+        }
+        if (count > maxCount)
+        {
+            maxCount = count;
+            most_occur = str[i];
+        }
+    }
+    return most_occur;
 }
 void count_low_up_digit ( char *str, int *lower, int *upper , int *digit)
 {
