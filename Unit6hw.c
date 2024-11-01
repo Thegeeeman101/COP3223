@@ -39,7 +39,20 @@ char most_occuring_character ( char *str)
 }
 void count_low_up_digit ( char *str, int *lower, int *upper , int *digit)
 {
-    //Your code goes here
+    
+    *lower = 0;
+    *upper = 0;
+    *digit = 0;
+    for (int i = 0; str[i] != '\0'; i++){
+        if (str[i] >= 'a' && str[i} <= 'z') {
+            (*lower)++; }
+        else if (str[i] >= 'A' && str[i] <= 'Z') {
+            (*upper)++; }
+        else if (str[i] >= '0' && str[i] <= '9') {
+            (*digit)++; }
+    }
+        
+    
 }
 char * Up_letters ( char *str)
 {
