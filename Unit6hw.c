@@ -61,7 +61,7 @@ char * Up_letters ( char *str)
     cap = malloc (strlen(str) * sizeof(char));
     for(i = 0; i < strlen(str); i++)
     {
-        if(str[i] >= 'A' && str[i] <= 'Z')
+        if(str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'a' && str[i] <= 'z')
         {
             cap[y] = str[i];
             y++;
@@ -69,6 +69,26 @@ char * Up_letters ( char *str)
     }
 
     cap[y] = '\0';
+
+    int count = strlen(cap);
+
+    for(i = 0; i < count; i++)
+    {
+        cap[i] = toupper(cap[i]);
+    }
+
+    for(i = 0; i < count - 1; i++) 
+    {
+        for (int j = i + 1; j < count; j++) 
+        {
+            if (cap[i] > cap[j]) 
+            {
+                char temp = cap[i];
+                cap[i] = cap[j];
+                cap[j] = temp;
+            }
+        }
+    }
 
     return cap;
 }
