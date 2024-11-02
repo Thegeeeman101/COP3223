@@ -14,7 +14,7 @@ char * Up_letters ( char *str);
 
 char most_occuring_character ( char *str)
 {
-    char most_occur = -1;
+    char most_occur = ' ';
     int maxCount = 0;
     int count = 0;
 
@@ -36,7 +36,11 @@ char most_occuring_character ( char *str)
         }
 
     }
-    return most_occur;
+    if(most_occur != ' ')
+    {
+        return most_occur;
+    }
+    return -1;
 }
 void count_low_up_digit ( char *str, int *lower, int *upper , int *digit)
 {
