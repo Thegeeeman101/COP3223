@@ -14,7 +14,7 @@ char * Up_letters ( char *str);
 
 char most_occuring_character ( char *str)
 {
-    char most_occur = '\0';
+    char most_occur = -1;
     int maxCount = 0;
     int count = 0;
 
@@ -29,11 +29,12 @@ char most_occuring_character ( char *str)
             }
 
         }
-        if (count > maxCount)
+        if (count > maxCount && count > 1)
         {
             maxCount = count;
             most_occur = str[i];
         }
+
     }
     return most_occur;
 }
