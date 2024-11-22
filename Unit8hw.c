@@ -57,12 +57,18 @@ returns the highest net salary.
 //----------------------- FUNCTION DEFINITIONS ---------------------------
 //0.
 int getId ( char * name ){
+    int sum = 0;
     printf ("COMING UP\n");
-    return 0;
+    for(int i = 0; i < strlen(name); i++)
+    {
+        sum += (int) toupper(name[i]);
+    }
+    return sum;
 }
 //1.
-void printEmployee ( struct employee ){
+void printEmployee ( struct employee emp){
     printf ("COMING UP\n");
+    printf("[%d,%s,%.2f]", emp.id, emp.name, ((emp.salary*0.91) + (emp.numberOfDependents * 0.01 * emp.salary)));
 }
 //2.
 void printAllEmployees ( struct employee * list){
