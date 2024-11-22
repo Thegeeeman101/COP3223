@@ -99,7 +99,16 @@ int searchEmployee ( struct employee * list , char * name){
 //5.
 float highestNetSalary ( struct employee * list){
     printf ("COMING UP\n");
-    return 0.0;
+    float highestSalary = list->salary;
+    while (list != NULL)
+    {
+        if (highestSalary < list->salary)
+        {
+            highestSalary = list->salary;
+        }
+        list = list->next;
+    }
+    return highestSalary;
 }
 //DO NOT CHANGE ANYTHING IN main
 int main() {
