@@ -73,6 +73,11 @@ void printEmployee ( struct employee emp){
 //2.
 void printAllEmployees ( struct employee * list){
     printf ("COMING UP\n");
+    struct employee * current = list;
+    while (current =! NULL){
+        printEmployee(*current);
+        current = current * next;
+    }
 }
 //3.
 struct employee * addEmployee ( struct employee * list , struct employee e){
