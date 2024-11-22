@@ -73,21 +73,42 @@ void printEmployee ( struct employee emp){
 //2.
 void printAllEmployees ( struct employee * list){
     printf ("COMING UP\n");
+    struct employee * current = list;
+    while (current =! NULL){
+        printEmployee(*current);
+        current = current * next;
+    }
 }
 //3.
 struct employee * addEmployee ( struct employee * list , struct employee e){
     printf ("COMING UP\n");
+    
+        
     return list;
 }
 //4.
 int searchEmployee ( struct employee * list , char * name){
     printf ("COMING UP\n");
+    while (list != NULL) {
+        if (strcmp(list ->name , name ) == 0){
+            return 1; }
+        list = list->next;
+    }
     return 0;
 }
 //5.
 float highestNetSalary ( struct employee * list){
     printf ("COMING UP\n");
-    return 0.0;
+    float highestSalary = list->salary;
+    while (list != NULL)
+    {
+        if (highestSalary < list->salary)
+        {
+            highestSalary = list->salary;
+        }
+        list = list->next;
+    }
+    return highestSalary;
 }
 //DO NOT CHANGE ANYTHING IN main
 int main() {
