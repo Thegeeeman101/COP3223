@@ -3,7 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
+#include <string.h>
+#include <ctype.h>
 struct employee {
     int id;
     char name[50];
@@ -74,9 +75,9 @@ void printEmployee ( struct employee emp){
 void printAllEmployees ( struct employee * list){
     printf ("COMING UP\n");
     struct employee * current = list;
-    while (current =! NULL){
+    while (current != NULL){
         printEmployee(*current);
-        current = current * next;
+        current = current->next;
     }
 }
 //3.
