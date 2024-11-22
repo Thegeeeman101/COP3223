@@ -82,11 +82,18 @@ void printAllEmployees ( struct employee * list){
 //3.
 struct employee * addEmployee ( struct employee * list , struct employee e){
     printf ("COMING UP\n");
+    
+        
     return list;
 }
 //4.
 int searchEmployee ( struct employee * list , char * name){
     printf ("COMING UP\n");
+    while (list != NULL) {
+        if (strcmp(list ->name , name ) == 0){
+            return 1; }
+        list = list->next;
+    }
     return 0;
 }
 //5.
