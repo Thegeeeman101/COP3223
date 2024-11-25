@@ -6,6 +6,7 @@
 #include<string.h>
 
 //--------------------------
+
 struct student
 {
     char fullName[50];
@@ -23,7 +24,9 @@ struct faculty
     char rank[10];
     struct faculty * next;
 };
+
 //--------------------------
+
 int menu();
 struct faculty * addfaculty ( struct faculty * list , struct faculty f);
 struct student * addstudent ( struct student * list , struct student s);
@@ -33,13 +36,8 @@ void printinvoice();
 void printfacultyinfo();
 void quit();
 
-
-
-
-
-
-
 //--------------------------
+
 int main()
 {
     menu();
@@ -47,6 +45,7 @@ int main()
 }
 
 //--------------------------
+
 int menu()
 {
     int option;
