@@ -31,7 +31,7 @@ void faculty();
 void student();
 void printinvoice();
 void printfacultyinfo();
-void exit();
+void quit();
 
 
 
@@ -75,7 +75,7 @@ int menu()
             printfacultyinfo();
             break;
         case 5:
-            exit();
+            quit();
             break;
         default:
             while(option > 5 || option < 1)
