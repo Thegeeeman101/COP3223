@@ -27,14 +27,14 @@ struct faculty
 
 //--------------------------
 
-int menu();
-struct faculty * addfaculty ( struct faculty * list , struct faculty f);
-struct student * addstudent ( struct student * list , struct student s);
-void faculty();
-void student();
-void printinvoice();
-void printfacultyinfo();
-void quit();
+int menu(); //opens menu with options
+struct faculty * addfaculty ( struct faculty * list , struct faculty f); //add faculty struct to list
+struct student * addstudent ( struct student * list , struct student s); //add student struct to list
+void faculty(); //opens option to add faculty
+void student(); //opens option to add faculty
+void printinvoice(); //opens option to print student tuition
+void printfacultyinfo(); //opens option to print faculty information
+void quit(); //opens option to quit program
 
 //--------------------------
 
@@ -109,5 +109,5 @@ void printfacultyinfo()
 
 void quit()
 {
-    
+
 }
