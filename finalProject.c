@@ -86,3 +86,28 @@ int menu()
     }
     return 0;
 }
+
+void faculty()
+{
+
+}
+
+void student()
+{
+
+}
+
+void printinvoice()
+{
+
+}
+
+void printfacultyinfo()
+{
+
+}
+
+void quit()
+{
+    
+}
