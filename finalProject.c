@@ -138,31 +138,37 @@ struct student * addstudent ( struct student * list, struct student s)
 }
 void faculty ()
 {
-        struct faculty * company = NULL , tempFaculty;
-        char name;
-        printf("Enter Full Name: ");
-        fgets(tempFaculty.fullName, 50, stdin);
-        printf ("Enter Faculty ID: ");
-        fgets (tempFaculty.id, 50, stdin);
-        printf ("Enter Department: ");
-        fgets (tempFaculty.department, 10, stdin);
-        printf ("Enter Rank: ");
-        fgets (tempFaculty.rank, 10, stdin);
-        company = addFaculty ( company , tempFaculty);
+    char dummy;
+    struct faculty * company = NULL , tempFaculty;
+    printf("Enter Full Name: ");
+    scanf("%c",&dummy);
+    fgets(tempFaculty.fullName, 50, stdin);
+    printf ("Enter Faculty ID: ");
+    scanf("%c",&dummy);
+    fgets (tempFaculty.id, 50, stdin);
+    printf ("Enter Department: ");
+    scanf("%c",&dummy);
+    fgets (tempFaculty.department, 10, stdin);
+    printf ("Enter Rank: ");
+    scanf("%c",&dummy);
+    fgets (tempFaculty.rank, 10, stdin);
+    company = addfaculty ( company , tempFaculty);
 }
 void student()
 {
+    char dummy;
     struct student * company = NULL , tempStudent;
-        char name;
-        printf("Enter Full Name: ");
-        fgets(tempStudent.fullName, 50, stdin);
-        printf ("Enter Faculty ID: ");
-        fgets (tempStudent.id, 50, stdin);
-        printf ("Enter GPA ");
-        scanf("%f", &tempStudent.gpa);
-        printf ("Enter Credit Hours: ");
-        scanf("%d", &tempStudent.creditHour);
-        company = addStudent ( company , tempStudent);
+    printf("Enter Full Name: ");
+    scanf("%c",&dummy);
+    fgets(tempStudent.fullName, 50, stdin);
+    printf ("Enter Faculty ID: ");
+    scanf("%c",&dummy);
+    fgets (tempStudent.id, 50, stdin);
+    printf ("Enter GPA ");
+    scanf("%f", &tempStudent.gpa);
+    printf ("Enter Credit Hours: ");
+    scanf("%d", &tempStudent.creditHour);
+    company = addstudent ( company , tempStudent);
 }
 
 void printinvoice()
