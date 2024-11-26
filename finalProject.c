@@ -87,14 +87,82 @@ int menu()
     return 0;
 }
 
-void faculty()
+struct faculty * addfaculty(struct faculty * list , struct faculty f )
 {
+    struct faculty * current = list;
+
+    while (current != NULL) {
+        if (strcmp(current->id, f.id) == 0) {
+            struct faculty * newNode = malloc(sizeof(struct faculty));
+            strcpy(newNode->fullName, f.fullName);
+            strcpy(newNode->id, f.id);
+            strcpy(newNode->department, f.department);
+            strcpy(newNode->rank, f.rank);
+            newNode->next = NULL;
+            return list;
+        }
+        current = current->next;
+    }
+    struct faculty * newNode = malloc( sizeof (struct faculty) );
+        strcpy(newNode->fullName, f.fullName);
+        strcpy(newNode->id, f.id);
+        strcpy(newNode->department, f.department);
+        strcpy(newNode->rank, f.rank);
+        newNode->next = list;
+        return newNode;
+}
+struct student * addstudent ( struct student * list, struct student s)
+{
+    struct student * current = list;
+
+    while (current != NULL) {
+        if (strcmp(current->id, s.id) == 0) {
+            struct student * newNode = malloc(sizeof(struct student));
+            strcpy(newNode->fullName, s.fullName);
+            strcpy(newNode->id, s.id);
+            newNode->gpa = s.gpa;
+            newNode->creditHour = s.creditHour;
+            newNode->next = NULL;
+            return list;
+        }
+        current = current->next;
+    }
+    struct student * newNode = malloc( sizeof (struct student) );
+        strcpy(newNode->fullName, s.fullName);
+        strcpy(newNode->id, s.id);
+        newNode->gpa = s.gpa;
+        newNode->creditHour = s.creditHour;
+        newNode->next = list;
+        return newNode;
 
 }
-
+void faculty ()
+{
+        struct faculty * company = NULL , tempFaculty;
+        char name;
+        printf("Enter Full Name: ");
+        fgets(tempFaculty.fullName, 50, stdin);
+        printf ("Enter Faculty ID: ");
+        fgets (tempFaculty.id, 50, stdin);
+        printf ("Enter Department: ");
+        fgets (tempFaculty.department, 10, stdin);
+        printf ("Enter Rank: ");
+        fgets (tempFaculty.rank, 10, stdin);
+        company = addFaculty ( company , tempFaculty);
+}
 void student()
 {
-
+    struct student * company = NULL , tempStudent;
+        char name;
+        printf("Enter Full Name: ");
+        fgets(tempStudent.fullName, 50, stdin);
+        printf ("Enter Faculty ID: ");
+        fgets (tempStudent.id, 50, stdin);
+        printf ("Enter GPA ");
+        scanf("%f", &tempStudent.gpa);
+        printf ("Enter Credit Hours: ");
+        scanf("%d", &tempStudent.creditHour);
+        company = addStudent ( company , tempStudent);
 }
 
 void printinvoice()
