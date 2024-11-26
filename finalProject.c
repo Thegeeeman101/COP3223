@@ -35,11 +35,14 @@ void student(); //opens option to add faculty
 void printinvoice(); //opens option to print student tuition
 void printfacultyinfo(); //opens option to print faculty information
 void quit(); //opens option to quit program
+void terminate();
 
 //--------------------------
 
 int main()
 {
+    printf("\t\tWelcome to PerPro\n");
+    printf("\n");
     menu();
     return 0;
 }
@@ -183,5 +186,11 @@ void printfacultyinfo()
 
 void quit()
 {
+    terminate();
+}
 
+void terminate()
+{
+    printf("Thank you for using PerPro. Goodbye!");
+    exit(0);
 }
