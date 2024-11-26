@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
+#include <ctype.h>
 
 //--------------------------
 
@@ -30,6 +31,7 @@ struct faculty
 int menu(); //opens menu with options
 struct faculty * addfaculty ( struct faculty * list , struct faculty f); //add faculty struct to list
 struct student * addstudent ( struct student * list , struct student s); //add student struct to list
+void toUpperCase();
 void faculty(); //opens option to add faculty
 void student(); //opens option to add faculty
 void printinvoice(); //opens option to print student tuition
@@ -89,6 +91,11 @@ int menu()
     }
     return 0;
 }
+void toUpperCase(char *str)
+{
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        str[i] = toupper(str[i]);
 
 struct faculty * addfaculty(struct faculty * list , struct faculty f )
 {
@@ -146,16 +153,20 @@ void faculty ()
     printf("Enter Full Name: ");
     scanf("%c",&dummy);
     fgets(tempFaculty.fullName, 50, stdin);
+    toUpperCase(tempFaculty.fullName);
     printf ("Enter Faculty ID: ");
     scanf("%c",&dummy);
     fgets (tempFaculty.id, 50, stdin);
+    toUpperCase(tempFaculty.id);
     printf ("Enter Department: ");
     scanf("%c",&dummy);
     fgets (tempFaculty.department, 10, stdin);
+    toUpperCase(tempFaculty.department);
     printf ("Enter Rank: ");
     scanf("%c",&dummy);
     fgets (tempFaculty.rank, 10, stdin);
-    company = addfaculty ( company , tempFaculty);
+    toUpperCase(tempFaculty.rank);
+    company = addfaculty ( company, tempFaculty);
 }
 void student()
 {
@@ -164,6 +175,7 @@ void student()
     printf("Enter Full Name: ");
     scanf("%c",&dummy);
     fgets(tempStudent.fullName, 50, stdin);
+    toUpperCase(tempStudent.fullName);
     printf ("Enter Faculty ID: ");
     scanf("%c",&dummy);
     fgets (tempStudent.id, 50, stdin);
