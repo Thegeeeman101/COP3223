@@ -191,6 +191,7 @@ void quit()
 
 void terminate()
 {
+    printf("\n");
     printf("Thank you for using PerPro. Goodbye!");
     exit(0);
 }
