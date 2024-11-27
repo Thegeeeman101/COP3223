@@ -269,8 +269,10 @@ void printinvoice(struct faculty * list2, struct student * list) {
     } else {
         float credit_cost = 236.45;
         float tuition = current->creditHour * credit_cost;
+        float discount = 0;
 
         if (current->gpa >= 3.85) {
+            discount = tuition * 0.25;
             tuition *= 0.75; 
         }
         printf("\nHere is the tuition invoice for %s:\n", current->fullName);
@@ -278,7 +280,7 @@ void printinvoice(struct faculty * list2, struct student * list) {
         printf("%s                                      (%s)\n\n", current->fullName, current->id);
         printf("Credit Hours: %d ($%.2f/credit hour)\n\n", current->creditHour, credit_cost);
         printf("Fees: $52.00\n");
-        printf("Total payment: $%.2f                    ($0 discount applied)\n", tuition + 52.00);
+        printf("Total payment: $%.2f                    ($%.2f discount applied)\n", tuition + 52.00 , discount);
         printf("-----------------------------------------------------------------------\n");
     }
     menu(list2, list);
