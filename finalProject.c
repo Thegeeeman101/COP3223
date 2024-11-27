@@ -163,21 +163,23 @@ void faculty ()
     int department;
     int rank;
     struct faculty * company = NULL , tempFaculty;
-    printf("Enter Full Name: ");
+
+    printf("Enter the faculty's info: ");
+    printf("Name of the faculty:");
     scanf("%c",&dummy);
     fgets(tempFaculty.fullName, 50, stdin);
     toUpperCase(tempFaculty.fullName);
-    printf ("Enter Faculty ID: ");
+    printf ("ID: ");
     fgets (tempFaculty.id, 50, stdin);
     toUpperCase(tempFaculty.id);
 
     do{
         if ( j == 3)
         {
-            printf(" You have tried too many times...");
+            printf("You have tried too many times...");
             terminate();//THROW THE EXIT FUNCTION HERE
         }
-        printf ("Enter Rank: ");
+        printf ("Rank: ");
         fgets (tempFaculty.rank, 10, stdin);
         toUpperCase(tempFaculty.rank);
         if (strcmp(tempFaculty.rank, "PROFESSOR") == 0 || strcmp(tempFaculty.department, "ADJUNCT") == 0) rank = 1;
@@ -192,11 +194,11 @@ void faculty ()
      do{
         if ( i == 3)
         {
-            printf(" You have tried too many times...");
+            printf("You have tried too many times...");
             terminate();//THROW THE EXIT FUNCTION HERE
         }
     
-        printf ("Enter Department: ");
+        printf ("Department: ");
         if(i == 0)
         {
             scanf("%c", &dummy);
@@ -214,6 +216,8 @@ void faculty ()
     }while(!department);
 
     company = addfaculty ( company, tempFaculty);
+    printf("\n");
+    printf("Thanks!");
     menu();
 }
 
@@ -221,17 +225,20 @@ void student()
 {
     char dummy;
     struct student * company = NULL , tempStudent;
-    printf("Enter Full Name: ");
+    printf("Enter the student's info:");
+    printf("Name of Student: ");
     scanf("%c",&dummy);
     fgets(tempStudent.fullName, 50, stdin);
     toUpperCase(tempStudent.fullName);
-    printf ("Enter Faculty ID: ");
+    printf ("ID: ");
     fgets (tempStudent.id, 50, stdin);
-    printf ("Enter GPA ");
+    printf ("Gpa: ");
     scanf("%f", &tempStudent.gpa);
-    printf ("Enter Credit Hours: ");
+    printf ("Credit hours: ");
     scanf("%d", &tempStudent.creditHour);
     company = addstudent ( company , tempStudent);
+    printf("\n");
+    printf("Thanks!");
     menu();
 }
 
@@ -240,7 +247,8 @@ void printinvoice(struct student *list) {
     struct student *current = list;
 
     printf("Enter the student's ID: ");
-    scanf("%s", studentID);
+    scanf("%s", &studentID);
+    toUpperCase(studentID);
 
     while (current != NULL) {
         if (strcmp(current->id, studentID) == 0) {
@@ -275,7 +283,8 @@ void printfacultyinfo(struct faculty *list) {
     struct faculty *current = list;
 
     printf("\nEnter the faculty's ID: ");
-    scanf("%s", facultyID);
+    scanf("%s", &facultyID);
+    toUpperCase(facultyID);
 
     while (current != NULL) {
         if (strcmp(current->id, facultyID) == 0) {
