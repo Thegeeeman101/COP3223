@@ -211,14 +211,63 @@ void student()
     company = addstudent ( company , tempStudent);
 }
 
-void printinvoice()
-{
+void printinvoice(struct student *list) {
+    char studentID[50];
+    struct student *current = list;
 
+    printf("Enter the student's ID: ");
+    scanf("%s", studentID);
+
+    while (current != NULL) {
+        if (strcmp(current->id, studentID) == 0) {
+            break;
+        }
+        current = current->next;
+    }
+
+    if (current == NULL) {
+        printf(" Sorry, student with ID %s not found.\n", studentID);
+    } else {
+        float credit_cost = 236.45;
+        float tuition = current->creditHour * credit_cost;
+
+        if (current->gpa >= 3.85) {
+            tuition *= 0.75; 
+        }
+        printf("\nHere is the tuition invoice for %s:\n", current->fullName);
+        printf("-----------------------------------------------------------------------\n");
+        printf("%s\n", current->fullName);
+        printf("%s\n", current->id);
+        printf("Credit Hours: %d\n", current->creditHour);
+        printf("Fees: $52.00\n");
+        printf("Total payment: $%.2f\n", tuition + 52.00);
+        printf("-----------------------------------------------------------------------\n");
+    }
 }
 
-void printfacultyinfo()
-{
+void printfacultyinfo(struct faculty *list) {
+    char facultyID[50];
+    struct faculty *current = list;
 
+    printf("\nEnter the faculty's ID: ");
+    scanf("%s", facultyID);
+
+    while (current != NULL) {
+        if (strcmp(current->id, facultyID) == 0) {
+            break; 
+        }
+        current = current->next;
+    }
+
+    if (current == NULL) {
+        printf("Faculty  %s doesnt exist.\n", facultyID);
+    } else {
+        printf("\nFaculty found:\n");
+        printf("----------------------------------------------------------------\n");
+        printf("%s\n", current->fullName); 
+        printf("%s department, %s\n", current->department, current->rank); 
+        printf("----------------------------------------------------------------\n");
+    }
 }
 
 void quit()
