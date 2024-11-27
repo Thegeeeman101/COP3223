@@ -172,7 +172,7 @@ void faculty ()
     toUpperCase(tempFaculty.id);
 
     do{
-        if ( j = 3)
+        if ( j == 3)
         {
             printf(" You have tried too many times...");
             terminate();//THROW THE EXIT FUNCTION HERE
@@ -190,13 +190,17 @@ void faculty ()
     }while(!rank);
 
      do{
-        if ( i = 3)
+        if ( i == 3)
         {
             printf(" You have tried too many times...");
             terminate();//THROW THE EXIT FUNCTION HERE
         }
     
         printf ("Enter Department: ");
+        if(i == 0)
+        {
+            scanf("%c", &dummy);
+        }
         fgets (tempFaculty.department, 10, stdin);
         toUpperCase(tempFaculty.department);
 
