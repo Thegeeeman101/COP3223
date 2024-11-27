@@ -148,7 +148,6 @@ struct student * addstudent ( struct student * list, struct student s)
         newNode->creditHour = s.creditHour;
         newNode->next = list;
         return newNode;
-
 }
 
 void faculty ()
