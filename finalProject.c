@@ -28,7 +28,7 @@ struct faculty
 
 //--------------------------
 
-int menu(); //opens menu with options
+int menu(struct faculty * list, struct student * list2); //opens menu with options
 struct faculty * addfaculty ( struct faculty * list , struct faculty f); //add faculty struct to list
 struct student * addstudent ( struct student * list , struct student s); //add student struct to list
 void toUpperCase();
@@ -43,17 +43,19 @@ void terminate();
 
 int main()
 {
+    struct student * students = NULL;
+    struct faculty * facultys = NULL;
     printf("\t\tWelcome to PerPro\n");
     printf("\n");
-    menu();
+    menu(facultys, students);
     return 0;
 }
 
 //--------------------------
 
-int menu()
+int menu(struct faculty * list, struct student * list2)
 {
-    struct employee * company = NULL;
+    
     int option;
     printf("Choose one of the options:\n" );
     printf("\n");
@@ -68,16 +70,16 @@ int menu()
     switch(option)
     {
         case 1: 
-            faculty();
+            faculty(list, list2);
             break;
         case 2:
-            student();
+            student(list, list2);
             break;
         case 3:
-            printinvoice(company);
+            printinvoice(list, list2);
             break;
         case 4:
-            printfacultyinfo(company);
+            printfacultyinfo(list, list2);
             break;
         case 5:
             quit();
@@ -155,14 +157,14 @@ struct student * addstudent ( struct student * list, struct student s)
         return newNode;
 }
 
-void faculty ()
+void faculty (struct faculty * list, struct student * list2)
 {
     int i;
     int j;
     char dummy;
     int department;
     int rank;
-    struct faculty * company = NULL , tempFaculty;
+    struct faculty * facultys = list , tempFaculty;
     printf("\n");
     printf("Enter the faculty's info:\n");
     printf("Name of the faculty: ");
@@ -215,16 +217,16 @@ void faculty ()
         }
     }while(!department);
 
-    company = addfaculty ( company, tempFaculty);
+    facultys = addfaculty ( facultys, tempFaculty);
     printf("\n");
     printf("Thanks!");
-    menu();
+    menu(facultys, list2);
 }
 
-void student()
+void student(struct faculty * list2, struct student * list)
 {
     char dummy;
-    struct student * company = NULL , tempStudent;
+    struct student * students = list , tempStudent;
     printf("\n");
     printf("Enter the student's info:\n ");
     printf("Name of Student: ");
@@ -237,13 +239,13 @@ void student()
     scanf("%f", &tempStudent.gpa);
     printf ("Credit hours: ");
     scanf("%d", &tempStudent.creditHour);
-    company = addstudent ( company , tempStudent);
+    students = addstudent ( students , tempStudent);
     printf("\n");
     printf("Thanks!");
-    menu();
+    menu(list2, students);
 }
 
-void printinvoice(struct student *list) {
+void printinvoice(struct faculty * list2, struct student * list) {
     char studentID[50];
     struct student *current = list;
 
@@ -276,10 +278,10 @@ void printinvoice(struct student *list) {
         printf("Total payment: $%.2f\n", tuition + 52.00);
         printf("-----------------------------------------------------------------------\n");
     }
-    menu();
+    menu(list2, list);
 }
 
-void printfacultyinfo(struct faculty *list) {
+void printfacultyinfo(struct faculty * list, struct student * list2) {
     char facultyID[50];
     struct faculty *current = list;
 
@@ -288,6 +290,7 @@ void printfacultyinfo(struct faculty *list) {
     toUpperCase(facultyID);
 
     while (current != NULL) {
+        printf("%s", current->id);
         if (strcmp(current->id, facultyID) == 0) {
             break; 
         }
@@ -303,8 +306,9 @@ void printfacultyinfo(struct faculty *list) {
         printf("%s\n", current->fullName); 
         printf("%s department, %s\n", current->department, current->rank); 
         printf("----------------------------------------------------------------\n");
+        printf("\n");
     }
-    menu();
+    menu(list, list2);
 }
 
 void quit()
