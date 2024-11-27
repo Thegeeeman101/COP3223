@@ -1,1 +1,1 @@
-#include <stdio.h>
+    if (printReportChoice == 'Y' || printReportChoice == 'y') {

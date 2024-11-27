@@ -36,7 +36,7 @@ void faculty(); //opens option to add faculty
 void student(); //opens option to add faculty
 void printinvoice(); //opens option to print student tuition
 void printfacultyinfo(); //opens option to print faculty information
-void quit(); //opens option to quit program
+void quit(struct faculty * list, struct student * list2); //opens option to quit program
 void terminate();
 
 //--------------------------
@@ -82,7 +82,7 @@ int menu(struct faculty * list, struct student * list2)
             printfacultyinfo(list, list2);
             break;
         case 5:
-            quit();
+            quit(list, list2);
             break;
         default:
             while(option > 5 || option < 1)
@@ -277,9 +277,9 @@ void printinvoice(struct faculty * list2, struct student * list) {
         }
         printf("\nHere is the tuition invoice for %s:\n", current->fullName);
         printf("-----------------------------------------------------------------------\n");
-        printf("%s                                      (%s)\n\n", current->fullName, current->id);
-        printf("Credit Hours: %d ($%.2f/credit hour)\n\n", current->creditHour, credit_cost);
-        printf("Fees: $52.00\n");
+        printf("%s                                      (%s)\n", current->fullName, current->id);
+        printf("Credit Hours: %d ($%.2f/credit hour)\n", current->creditHour, credit_cost);
+        printf("Fees: $52.00\n\n");
         printf("Total payment: $%.2f                    ($%.2f discount applied)\n", tuition + 52.00 , discount);
         printf("-----------------------------------------------------------------------\n");
     }
@@ -316,8 +316,120 @@ void printfacultyinfo(struct faculty * list, struct student * list2) {
     menu(list, list2);
 }
 
-void quit()
+void quit(struct faculty * list, struct student * list2)
 {
+    char printReportChoice, sortChoice, sortChoice2, dummy;
+
+    struct faculty *temp = NULL;
+    struct faculty *current = list;
+    struct faculty *next = list->next;
+
+    struct student *temp2 = NULL;
+    struct student *current2 = list2;
+    struct student *next2 = list2->next;
+
+    printf("Would you like to print the final report (Y/N): ");
+    //scanf("%c",&dummy);
+    scanf(" %c", &printReportChoice);
+
+    if(printReportChoice == 'Y' || printReportChoice == 'y') 
+    {
+        printf("\nN or n to sort the faculty by name\n");
+        printf("D or d to sort the faculty by department\n");
+        printf("R or r to sort the faculty by rank\n");
+        printf("Make your sort selection: ");
+        //scanf("%c", &dummy);
+        scanf(" %c", &sortChoice);
+
+        if (sortChoice == 'N' || sortChoice == 'n')
+        {
+            while(current != NULL && next != NULL)
+            {
+                printf("%s - %s\n", current->fullName, next->fullName);
+                if (strcmp(current->fullName, next->fullName) > 0) 
+                {
+                    temp = current;
+                    current = next;
+                    next = temp;
+                }
+                current = current->next;
+            }
+            printf("%s - %s\n", current->fullName, next->fullName);
+        } 
+        else if (sortChoice == 'D' || sortChoice == 'd')
+        {
+            while(current != NULL && next != NULL)
+            {
+                if (strcmp(current->department, next->department) > 0) 
+                {
+                    temp = current;
+                    current = next;
+                    next = temp;
+                }
+                current = current->next;
+            }
+        } 
+        else if (sortChoice == 'R' || sortChoice == 'r') 
+        {
+            while(current != NULL && next != NULL)
+            {
+                if (strcmp(current->rank, next->rank) > 0) 
+                {
+                    temp = current;
+                    current = next;
+                    next = temp;
+                }
+                current = current->next;
+            }
+        }
+        printf("\nN or n to sort the students by name\n");
+        printf("G or g to sort the students by GPA\n");
+        printf("Make your sort selection: ");
+        //scanf("%c", &dummy);
+        scanf(" %c", &sortChoice2);
+
+        if (sortChoice2 == 'N' || sortChoice2 == 'n') 
+        {
+            while(current2 != NULL && next2 != NULL)
+            {
+                if (strcmp(current2->fullName, next2->fullName) > 0) 
+                {
+                    temp2 = current2;
+                    current2 = next2;
+                    next2 = temp2;
+                }
+                current2 = current2->next;
+            }
+        } 
+        else if (sortChoice2 == 'G' || sortChoice2 == 'g') 
+        {
+            while(current2 != NULL && next2 != NULL)
+            {
+                if (current2->gpa < next2->gpa) 
+                {
+                    temp2 = current2;
+                    current2 = next2;
+                    next2 = temp2;
+                }
+                current2 = current2->next;
+            }
+        }
+    }
+
+    printf("Here is your report....\n\n");
+    printf("\t------ L I S T  O F  F A C U L T Y -----\n");
+    while(current != NULL)
+    {
+        printf("\t\t%s - %s\n", current->fullName, current->department);
+        current = current->next;
+    }
+    printf("\n");
+    printf("\t------ L I S T  O F  S T U D E N T S -----\n");
+    while(current2 != NULL)
+    {
+        printf("\t\t%s (GPA = %.2f)\n", current2->fullName, current2->gpa);
+        current2 = current2->next;
+    }
     terminate();
 }
 
