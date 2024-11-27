@@ -53,6 +53,7 @@ int main()
 
 int menu()
 {
+    struct employee * company = NULL;
     int option;
     printf("Choose one of the options:\n" );
     printf("\n");
@@ -73,10 +74,10 @@ int menu()
             student();
             break;
         case 3:
-            printinvoice();
+            printinvoice(company);
             break;
         case 4:
-            printfacultyinfo();
+            printfacultyinfo(company);
             break;
         case 5:
             quit();
@@ -156,6 +157,8 @@ struct student * addstudent ( struct student * list, struct student s)
 
 void faculty ()
 {
+    int i;
+    int j;
     char dummy;
     int department;
     int rank;
@@ -168,7 +171,7 @@ void faculty ()
     fgets (tempFaculty.id, 50, stdin);
     toUpperCase(tempFaculty.id);
 
-     do {
+    do{
         if ( i = 3)
         {
             printf(" You have tried too many times...");
@@ -179,15 +182,16 @@ void faculty ()
         fgets (tempFaculty.department, 10, stdin);
         toUpperCase(tempFaculty.department);
 
-        if (strcmp(tempFaculty.department, "MATH") == 0 || strcmp(tempFaculty.department, "CS") == 0 || strcmp(tempFaculty.department, "SCIENCE") == 0) department = 1 
+        if (strcmp(tempFaculty.department, "MATH") == 0 || strcmp(tempFaculty.department, "CS") == 0 || strcmp(tempFaculty.department, "SCIENCE") == 0) department = 1; 
         else 
         {
             printf("Invalid department. Please enter 'MATH', 'CS', or 'SCIENCE'.\n");
             department = 0;
             i++;
-        }while(!department);
+        }
+    }while(!department);
 
-    do {
+    do{
         if ( j = 3)
         {
             printf(" You have tried too many times...");
@@ -202,7 +206,8 @@ void faculty ()
             printf("Invalid rank. Please enter 'Professor' or 'ADJUNCT'.\n");
             rank = 0;
             j++;
-        }while(!rank);
+        }
+    }while(!rank);
     company = addfaculty ( company, tempFaculty);
 }
 
@@ -273,7 +278,8 @@ void printfacultyinfo(struct faculty *list) {
 
     if (current == NULL) {
         printf("Faculty  %s doesnt exist.\n", facultyID);
-    } else {
+    } 
+    else {
         printf("\nFaculty found:\n");
         printf("----------------------------------------------------------------\n");
         printf("%s\n", current->fullName); 
