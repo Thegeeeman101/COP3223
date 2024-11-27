@@ -163,9 +163,9 @@ void faculty ()
     int department;
     int rank;
     struct faculty * company = NULL , tempFaculty;
-
-    printf("Enter the faculty's info: ");
-    printf("Name of the faculty:");
+    printf("\n");
+    printf("Enter the faculty's info:\n");
+    printf("Name of the faculty: ");
     scanf("%c",&dummy);
     fgets(tempFaculty.fullName, 50, stdin);
     toUpperCase(tempFaculty.fullName);
@@ -225,7 +225,8 @@ void student()
 {
     char dummy;
     struct student * company = NULL , tempStudent;
-    printf("Enter the student's info:");
+    printf("\n");
+    printf("Enter the student's info:\n ");
     printf("Name of Student: ");
     scanf("%c",&dummy);
     fgets(tempStudent.fullName, 50, stdin);
