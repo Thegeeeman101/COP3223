@@ -150,6 +150,8 @@ struct student * addstudent ( struct student * list, struct student s)
 void faculty ()
 {
     char dummy;
+    int department;
+    int rank;
     struct faculty * company = NULL , tempFaculty;
     printf("Enter Full Name: ");
     scanf("%c",&dummy);
@@ -159,15 +161,34 @@ void faculty ()
     scanf("%c",&dummy);
     fgets (tempFaculty.id, 50, stdin);
     toUpperCase(tempFaculty.id);
-    printf ("Enter Department: ");
-    scanf("%c",&dummy);
-    fgets (tempFaculty.department, 10, stdin);
-    toUpperCase(tempFaculty.department);
-    printf ("Enter Rank: ");
-    scanf("%c",&dummy);
-    fgets (tempFaculty.rank, 10, stdin);
-    toUpperCase(tempFaculty.rank);
-    company = addfaculty ( company, tempFaculty);
+
+    do {
+        printf ("Enter Department: ");
+        scanf("%c",&dummy);
+        fgets (tempFaculty.department, 10, stdin);
+        toUpperCase(tempFaculty.department);
+
+        if (strcmp(tempFaculty.department, "MATH") == 0 || strcmp(tempFaculty.department, "CS") == 0 || strcmp(tempFaculty.department, "SCIENCE") == 0) department = 1 
+        else 
+        {
+            printf("Invalid department. Please enter 'MATH', 'CS', or 'SCIENCE'.\n");
+            department = 0;
+        }while(!department);
+
+    do {
+        printf ("Enter Rank: ");
+        scanf("%c",&dummy);
+        fgets (tempFaculty.rank, 10, stdin);
+        toUpperCase(tempFaculty.rank);
+        if (strcmp(tempFaculty.rank, "PROFESSOR") == 0 || strcmp(tempFaculty.department, "ADJUNCT") == 0) rank = 1;
+        else
+        {
+            printf("Invalid rank. Please enter 'Professor' or 'ADJUNCT'.\n");
+            rank = 0;
+        }while(!rank);
+    
+            
+            company = addfaculty ( company, tempFaculty);
 }
 void student()
 {
