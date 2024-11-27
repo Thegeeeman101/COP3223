@@ -91,6 +91,7 @@ int menu()
     }
     return 0;
 }
+
 void toUpperCase(char *str)
 {
     for (int i = 0; str[i] != '\0'; i++)
@@ -98,6 +99,7 @@ void toUpperCase(char *str)
         str[i] = toupper(str[i]);
     }
 }
+
 struct faculty * addfaculty(struct faculty * list , struct faculty f )
 {
     struct faculty * current = list;
@@ -122,6 +124,7 @@ struct faculty * addfaculty(struct faculty * list , struct faculty f )
         newNode->next = list;
         return newNode;
 }
+
 struct student * addstudent ( struct student * list, struct student s)
 {
     struct student * current = list;
@@ -147,6 +150,7 @@ struct student * addstudent ( struct student * list, struct student s)
         return newNode;
 
 }
+
 void faculty ()
 {
     char dummy;
@@ -189,6 +193,7 @@ void faculty ()
     }while(!rank);
     company = addfaculty ( company, tempFaculty);
 }
+
 void student()
 {
     char dummy;
