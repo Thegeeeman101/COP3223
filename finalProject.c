@@ -168,13 +168,13 @@ void faculty ()
         fgets (tempFaculty.department, 10, stdin);
         toUpperCase(tempFaculty.department);
 
-        if (strcmp(tempFaculty.department, "MATH") == 0 || strcmp(tempFaculty.department, "CS") == 0 || strcmp(tempFaculty.department, "SCIENCE") == 0) department = 1 
+        if (strcmp(tempFaculty.department, "MATH") == 0 || strcmp(tempFaculty.department, "CS") == 0 || strcmp(tempFaculty.department, "SCIENCE") == 0) department = 1; 
         else 
         {
             printf("Invalid department. Please enter 'MATH', 'CS', or 'SCIENCE'.\n");
             department = 0;
-        }while(!department);
-
+        }
+    }while(!department);
     do {
         printf ("Enter Rank: ");
         scanf("%c",&dummy);
@@ -185,10 +185,9 @@ void faculty ()
         {
             printf("Invalid rank. Please enter 'Professor' or 'ADJUNCT'.\n");
             rank = 0;
-        }while(!rank);
-    
-            
-            company = addfaculty ( company, tempFaculty);
+        }
+    }while(!rank);
+    company = addfaculty ( company, tempFaculty);
 }
 void student()
 {
