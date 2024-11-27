@@ -97,6 +97,10 @@ void toUpperCase(char *str)
     for (int i = 0; str[i] != '\0'; i++)
     {
         str[i] = toupper(str[i]);
+        if(str[i] == '\n')
+        {
+            str[i] = '\0';
+        }
     }
 }
 
@@ -161,13 +165,11 @@ void faculty ()
     fgets(tempFaculty.fullName, 50, stdin);
     toUpperCase(tempFaculty.fullName);
     printf ("Enter Faculty ID: ");
-    scanf("%c",&dummy);
     fgets (tempFaculty.id, 50, stdin);
     toUpperCase(tempFaculty.id);
 
     do {
         printf ("Enter Department: ");
-        scanf("%c",&dummy);
         fgets (tempFaculty.department, 10, stdin);
         toUpperCase(tempFaculty.department);
 
@@ -180,7 +182,6 @@ void faculty ()
     }while(!department);
     do {
         printf ("Enter Rank: ");
-        scanf("%c",&dummy);
         fgets (tempFaculty.rank, 10, stdin);
         toUpperCase(tempFaculty.rank);
         if (strcmp(tempFaculty.rank, "PROFESSOR") == 0 || strcmp(tempFaculty.department, "ADJUNCT") == 0) rank = 1;
@@ -202,7 +203,6 @@ void student()
     fgets(tempStudent.fullName, 50, stdin);
     toUpperCase(tempStudent.fullName);
     printf ("Enter Faculty ID: ");
-    scanf("%c",&dummy);
     fgets (tempStudent.id, 50, stdin);
     printf ("Enter GPA ");
     scanf("%f", &tempStudent.gpa);
