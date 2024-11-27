@@ -219,7 +219,8 @@ void faculty (struct faculty * list, struct student * list2)
 
     facultys = addfaculty ( facultys, tempFaculty);
     printf("\n");
-    printf("Thanks!");
+    printf("Thanks!\n");
+    printf("\n");
     menu(facultys, list2);
 }
 
@@ -235,13 +236,15 @@ void student(struct faculty * list2, struct student * list)
     toUpperCase(tempStudent.fullName);
     printf ("ID: ");
     fgets (tempStudent.id, 50, stdin);
+    toUpperCase(tempStudent.id);
     printf ("Gpa: ");
     scanf("%f", &tempStudent.gpa);
     printf ("Credit hours: ");
     scanf("%d", &tempStudent.creditHour);
     students = addstudent ( students , tempStudent);
     printf("\n");
-    printf("Thanks!");
+    printf("Thanks!\n");
+    printf("\n");
     menu(list2, students);
 }
 
@@ -254,6 +257,7 @@ void printinvoice(struct faculty * list2, struct student * list) {
     toUpperCase(studentID);
 
     while (current != NULL) {
+        printf("%s", current->id);
         if (strcmp(current->id, studentID) == 0) {
             break;
         }
