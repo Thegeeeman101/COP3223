@@ -348,7 +348,7 @@ void quit(struct faculty * list, struct student * list2)
                 printf("%s - %s\n", current->fullName, next->fullName);
                 if (strcmp(current->fullName, next->fullName) > 0) 
                 {
-                    temp = current;
+                    temp = current; //this doesn't swap the nodes
                     current = next;
                     next = temp;
                 }
