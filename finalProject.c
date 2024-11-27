@@ -275,11 +275,10 @@ void printinvoice(struct faculty * list2, struct student * list) {
         }
         printf("\nHere is the tuition invoice for %s:\n", current->fullName);
         printf("-----------------------------------------------------------------------\n");
-        printf("%s\n", current->fullName);
-        printf("%s\n", current->id);
-        printf("Credit Hours: %d\n", current->creditHour);
+        printf("%s                                      (%s)\n\n", current->fullName, current->id);
+        printf("Credit Hours: %d ($%.2f/credit hour)\n\n", current->creditHour, credit_cost);
         printf("Fees: $52.00\n");
-        printf("Total payment: $%.2f\n", tuition + 52.00);
+        printf("Total payment: $%.2f                    ($0 discount applied)\n", tuition + 52.00);
         printf("-----------------------------------------------------------------------\n");
     }
     menu(list2, list);
