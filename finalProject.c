@@ -232,16 +232,16 @@ void student(struct faculty * list2, struct student * list)
     struct student * students = list , tempStudent;
     printf("\n");
     printf("Enter the student's info:\n ");
-    printf("Name of Student: ");
+    printf("\tName of Student: ");
     scanf("%c",&dummy);
     fgets(tempStudent.fullName, 50, stdin);
     toUpperCase(tempStudent.fullName);
-    printf ("ID: ");
+    printf ("\tID: ");
     fgets (tempStudent.id, 50, stdin);
     toUpperCase(tempStudent.id);
-    printf ("Gpa: ");
+    printf ("\tGpa: ");
     scanf("%f", &tempStudent.gpa);
-    printf ("Credit hours: ");
+    printf ("\tCredit hours: ");
     scanf("%d", &tempStudent.creditHour);
     students = addstudent ( students , tempStudent);
     printf("\n");
@@ -249,6 +249,7 @@ void student(struct faculty * list2, struct student * list)
     printf("\n");
     menu(list2, students);
 }
+
 
 void printinvoice(struct faculty * list2, struct student * list) {
     char studentID[50];
