@@ -168,13 +168,12 @@ void faculty (struct faculty * list, struct student * list2)
     printf("\n");
     printf("Enter the faculty's info:\n");
     printf("\tName of the faculty: ");
+    scanf("%c", &dummy);
     fgets(tempFaculty.fullName, 50, stdin);
     toUpperCase(tempFaculty.fullName);
-    scanf("%c", &dummy);
     printf ("\tID: ");
     fgets (tempFaculty.id, 50, stdin);
     toUpperCase(tempFaculty.id);
-    while (getchar() != '\n');
     do{
         if ( j == 3)
         {
