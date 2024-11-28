@@ -161,9 +161,12 @@ void faculty (struct faculty * list, struct student * list2)
 {
     int i = 0;
     int j = 0;
+    int k = 0;
+    int failed = 0;
     char dummy;
     int department;
     int rank;
+    int id;
     struct faculty * facultys = list , tempFaculty;
     printf("\n");
     printf("Enter the faculty's info:\n");
@@ -171,14 +174,47 @@ void faculty (struct faculty * list, struct student * list2)
     scanf("%c", &dummy);
     fgets(tempFaculty.fullName, 50, stdin);
     toUpperCase(tempFaculty.fullName);
-    printf ("\tID: ");
-    fgets (tempFaculty.id, 50, stdin);
-    toUpperCase(tempFaculty.id);
+    do{
+        if ( k == 3)
+        {
+            printf("You have tried too many times...");
+            terminate();//THROW THE EXIT FUNCTION HERE
+        }
+
+        printf ("\tID: ");
+        fgets (tempFaculty.id, 50, stdin);
+        toUpperCase(tempFaculty.id);
+
+        if ((strlen(tempFaculty.id) == 8) && (isalpha(tempFaculty.id[0])) && (isalpha(tempFaculty.id[1])))
+        {
+            failed = 0;
+        }
+        for (int l = 2; l < 8; l++)
+            {
+                    if(isdigit(tempFaculty.id[l]) == 0)
+                    {
+                        failed = 1;
+                        break;
+                    }
+            }
+        if(failed == 1)
+        {
+            printf("Sorry entered rank (%s) is invalid. Try again.\n", tempFaculty.id);
+            id = 0;
+            k++;
+        }
+        else
+        {
+           id = 1;
+        }
+
+    }while(id == 0);
+
     do{
         if ( j == 3)
         {
             printf("You have tried too many times...");
-            terminate();//THROW THE EXIT FUNCTION HERE
+            terminate();
         }
 
         printf ("\tRank: ");
@@ -198,7 +234,7 @@ void faculty (struct faculty * list, struct student * list2)
         if ( i == 3)
         {
             printf("You have tried too many times...");
-            terminate();//THROW THE EXIT FUNCTION HERE
+            terminate();
         }
 
         printf ("\tDepartment: ");
@@ -228,6 +264,9 @@ void faculty (struct faculty * list, struct student * list2)
 void student(struct faculty * list2, struct student * list)
 {
     char dummy;
+    int id;
+    int k;
+    int failed;
     struct student * students = list , tempStudent;
     printf("\n");
     printf("Enter the student's info:\n ");
@@ -235,9 +274,42 @@ void student(struct faculty * list2, struct student * list)
     scanf("%c",&dummy);
     fgets(tempStudent.fullName, 50, stdin);
     toUpperCase(tempStudent.fullName);
-    printf ("\tID: ");
-    fgets (tempStudent.id, 50, stdin);
-    toUpperCase(tempStudent.id);
+    do{
+        if ( k == 3)
+        {
+            printf("You have tried too many times...");
+            terminate();
+        }
+
+        printf ("\tID: ");
+        fgets (tempStudent.id, 50, stdin);
+        toUpperCase(tempStudent.id);
+
+        if ((strlen(tempStudent.id) == 8) && (isalpha(tempStudent.id[0])) && (isalpha(tempStudent.id[1])))
+        {
+            failed = 0;
+        }
+        for (int l = 2; l < 8; l++)
+            {
+                    if(isdigit(tempStudent.id[l]) == 0)
+                    {
+                        failed = 1;
+                        break;
+                    }
+            }
+        if(failed == 1)
+        {
+            printf("Sorry entered rank (%s) is invalid. Try again.\n", tempStudent.id);
+            id = 0;
+            k++;
+        }
+        else
+        {
+           id = 1;
+        }
+
+    }while(id == 0);
+
     printf ("\tGpa: ");
     scanf("%f", &tempStudent.gpa);
     printf ("\tCredit hours: ");
