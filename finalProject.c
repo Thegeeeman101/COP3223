@@ -159,39 +159,41 @@ struct student * addstudent ( struct student * list, struct student s)
 
 void faculty (struct faculty * list, struct student * list2)
 {
-    int i;
-    int j;
+    int i = 0;
+    int j = 0;
     char dummy;
     int department;
     int rank;
     struct faculty * facultys = list , tempFaculty;
     printf("\n");
     printf("Enter the faculty's info:\n");
-    printf("Name of the faculty: ");
-    scanf("%c",&dummy);
+    printf("\tName of the faculty: ");
     fgets(tempFaculty.fullName, 50, stdin);
     toUpperCase(tempFaculty.fullName);
-    printf ("ID: ");
+    scanf("%c", &dummy);
+    printf ("\tID: ");
     fgets (tempFaculty.id, 50, stdin);
     toUpperCase(tempFaculty.id);
-
+    while (getchar() != '\n');
     do{
         if ( j == 3)
         {
             printf("You have tried too many times...");
             terminate();//THROW THE EXIT FUNCTION HERE
         }
-        printf ("Rank: ");
+
+        printf ("\tRank: ");
         fgets (tempFaculty.rank, 10, stdin);
         toUpperCase(tempFaculty.rank);
-        if (strcmp(tempFaculty.rank, "PROFESSOR") == 0 || strcmp(tempFaculty.department, "ADJUNCT") == 0) rank = 1;
+
+        if (strcmp(tempFaculty.rank, "PROFESSOR") == 0 || strcmp(tempFaculty.rank, "ADJUNCT") == 0) rank = 1;
         else
         {
             printf("Sorry entered rank (%s) is invalid. Try again.\n", tempFaculty.rank);
             rank = 0;
             j++;
         }
-    }while(!rank);
+    }while(rank == 0);
 
      do{
         if ( i == 3)
@@ -199,8 +201,8 @@ void faculty (struct faculty * list, struct student * list2)
             printf("You have tried too many times...");
             terminate();//THROW THE EXIT FUNCTION HERE
         }
-    
-        printf ("Department: ");
+
+        printf ("\tDepartment: ");
         if(i == 0)
         {
             scanf("%c", &dummy);
@@ -208,14 +210,14 @@ void faculty (struct faculty * list, struct student * list2)
         fgets (tempFaculty.department, 10, stdin);
         toUpperCase(tempFaculty.department);
 
-        if (strcmp(tempFaculty.department, "MATH") == 0 || strcmp(tempFaculty.department, "CS") == 0 || strcmp(tempFaculty.department, "SCIENCE") == 0) department = 1; 
-        else 
+        if (strcmp(tempFaculty.department, "MATH") == 0 || strcmp(tempFaculty.department, "CS") == 0 || strcmp(tempFaculty.department, "SCIENCE") == 0) department = 1;
+        else
         {
             printf("Sorry entered department (%s) is invalid. Try again.\n", tempFaculty.department);
             department = 0;
             i++;
         }
-    }while(!department);
+    }while(department == 0);
 
     facultys = addfaculty ( facultys, tempFaculty);
     printf("\n");
@@ -230,16 +232,16 @@ void student(struct faculty * list2, struct student * list)
     struct student * students = list , tempStudent;
     printf("\n");
     printf("Enter the student's info:\n ");
-    printf("Name of Student: ");
+    printf("\tName of Student: ");
     scanf("%c",&dummy);
     fgets(tempStudent.fullName, 50, stdin);
     toUpperCase(tempStudent.fullName);
-    printf ("ID: ");
+    printf ("\tID: ");
     fgets (tempStudent.id, 50, stdin);
     toUpperCase(tempStudent.id);
-    printf ("Gpa: ");
+    printf ("\tGpa: ");
     scanf("%f", &tempStudent.gpa);
-    printf ("Credit hours: ");
+    printf ("\tCredit hours: ");
     scanf("%d", &tempStudent.creditHour);
     students = addstudent ( students , tempStudent);
     printf("\n");
@@ -247,6 +249,7 @@ void student(struct faculty * list2, struct student * list)
     printf("\n");
     menu(list2, students);
 }
+
 
 void printinvoice(struct faculty * list2, struct student * list) {
     char studentID[50];
