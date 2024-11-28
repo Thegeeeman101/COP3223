@@ -320,13 +320,17 @@ void quit(struct faculty * list, struct student * list2)
 {
     char printReportChoice, sortChoice, sortChoice2, dummy;
 
+    //struct faculty *temp = NULL;
+    //struct faculty *current = list;
+    //struct faculty *next = list->next;
+
     struct faculty *temp = NULL;
     struct faculty *current = list;
-    struct faculty *next = list->next;
+    struct faculty *next = NULL;
 
     struct student *temp2 = NULL;
     struct student *current2 = list2;
-    struct student *next2 = list2->next;
+    struct student *next2 = NULL;
 
     printf("Would you like to print the final report (Y/N): ");
     //scanf("%c",&dummy);
@@ -345,28 +349,54 @@ void quit(struct faculty * list, struct student * list2)
         {
             while(current != NULL && next != NULL)
             {
-                printf("%s - %s\n", current->fullName, next->fullName);
                 if (strcmp(current->fullName, next->fullName) > 0) 
                 {
-                    temp = current; //this doesn't swap the nodes
-                    current = next;
-                    next = temp;
+                    if (temp != NULL) 
+                    {
+                        temp->next = next;
+                    } 
+                    else 
+                    {
+                        list = next;
+                    }
+
+                    current->next = next->next;
+                    next->next = current;
+
+                    temp = next;
+                } 
+                else 
+                {
+                    temp = current;
+                    current = current->next;
                 }
-                current = current->next;
             }
-            printf("%s - %s\n", current->fullName, next->fullName);
         } 
         else if (sortChoice == 'D' || sortChoice == 'd')
         {
             while(current != NULL && next != NULL)
             {
-                if (strcmp(current->department, next->department) > 0) 
+               if (strcmp(current->department, next->department) > 0) 
+               {
+                    if (temp != NULL) 
+                    {
+                        temp->next = next;
+                    } 
+                    else 
+                    {
+                        list = next;
+                    }
+
+                    current->next = next->next;
+                    next->next = current;
+
+                    temp = next;
+                } 
+                else 
                 {
                     temp = current;
-                    current = next;
-                    next = temp;
+                    current = current->next;
                 }
-                current = current->next;
             }
         } 
         else if (sortChoice == 'R' || sortChoice == 'r') 
@@ -375,11 +405,25 @@ void quit(struct faculty * list, struct student * list2)
             {
                 if (strcmp(current->rank, next->rank) > 0) 
                 {
+                    if (temp != NULL) 
+                    {
+                        temp->next = next;
+                    } 
+                    else 
+                    {
+                        list = next;
+                    }
+
+                    current->next = next->next;
+                    next->next = current;
+
+                    temp = next;
+                } 
+                else 
+                {
                     temp = current;
-                    current = next;
-                    next = temp;
+                    current = current->next;
                 }
-                current = current->next;
             }
         }
         printf("\nN or n to sort the students by name\n");
@@ -392,30 +436,57 @@ void quit(struct faculty * list, struct student * list2)
         {
             while(current2 != NULL && next2 != NULL)
             {
-                if (strcmp(current2->fullName, next2->fullName) > 0) 
+                if (strcmp(current2->fullName, next2->fullName) > 0)
+                {
+                    if (temp2 != NULL) 
+                    {
+                        temp2->next = next2;
+                    } 
+                    else 
+                    {
+                        list2 = next2;
+                    }
+
+                    current2->next = next2->next;
+                    next2->next = current2;
+
+                    temp2 = next2;
+                } 
+                else 
                 {
                     temp2 = current2;
-                    current2 = next2;
-                    next2 = temp2;
+                    current2 = current2->next;
                 }
-                current2 = current2->next;
             }
         } 
         else if (sortChoice2 == 'G' || sortChoice2 == 'g') 
         {
             while(current2 != NULL && next2 != NULL)
             {
-                if (current2->gpa < next2->gpa) 
+                if (current2->gpa < next2->gpa)
+                {
+                    if (temp2 != NULL) 
+                    {
+                        temp2->next = next2;
+                    } 
+                    else 
+                    {
+                        list2 = next2;
+                    }
+
+                    current2->next = next2->next;
+                    next2->next = current2;
+
+                    temp2 = next2;
+                } 
+                else 
                 {
                     temp2 = current2;
-                    current2 = next2;
-                    next2 = temp2;
+                    current2 = current2->next;
                 }
-                current2 = current2->next;
             }
         }
     }
-
     printf("Here is your report....\n\n");
     printf("\t------ L I S T  O F  F A C U L T Y -----\n");
     while(current != NULL)
