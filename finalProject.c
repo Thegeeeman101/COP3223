@@ -162,7 +162,6 @@ void faculty (struct faculty * list, struct student * list2)
     int i = 0;
     int j = 0;
     int k = 0;
-    int failed = 0;
     char dummy;
     int department;
     int rank;
@@ -175,6 +174,8 @@ void faculty (struct faculty * list, struct student * list2)
     fgets(tempFaculty.fullName, 50, stdin);
     toUpperCase(tempFaculty.fullName);
     do{
+            int letters = 1;
+            int numbers = 0;
         if ( k == 3)
         {
             printf("You have tried too many times...");
@@ -187,17 +188,17 @@ void faculty (struct faculty * list, struct student * list2)
 
         if ((strlen(tempFaculty.id) == 8) && (isalpha(tempFaculty.id[0])) && (isalpha(tempFaculty.id[1])))
         {
-            failed = 0;
+            letters = 0;
         }
         for (int l = 2; l < 8; l++)
             {
                     if(isdigit(tempFaculty.id[l]) == 0)
                     {
-                        failed = 1;
+                        numbers = 1;
                         break;
                     }
             }
-        if(failed == 1)
+        if(letters == 1 || numbers == 1)
         {
             printf("Sorry entered rank (%s) is invalid. Try again.\n", tempFaculty.id);
             id = 0;
@@ -266,7 +267,6 @@ void student(struct faculty * list2, struct student * list)
     char dummy;
     int id;
     int k;
-    int failed;
     struct student * students = list , tempStudent;
     printf("\n");
     printf("Enter the student's info:\n ");
@@ -275,6 +275,8 @@ void student(struct faculty * list2, struct student * list)
     fgets(tempStudent.fullName, 50, stdin);
     toUpperCase(tempStudent.fullName);
     do{
+            int letters = 1;
+            int numbers = 0;
         if ( k == 3)
         {
             printf("You have tried too many times...");
@@ -287,17 +289,17 @@ void student(struct faculty * list2, struct student * list)
 
         if ((strlen(tempStudent.id) == 8) && (isalpha(tempStudent.id[0])) && (isalpha(tempStudent.id[1])))
         {
-            failed = 0;
+            letters = 0;
         }
         for (int l = 2; l < 8; l++)
             {
                     if(isdigit(tempStudent.id[l]) == 0)
                     {
-                        failed = 1;
+                        numbers = 1;
                         break;
                     }
             }
-        if(failed == 1)
+        if(letters == 1 || numbers == 1)
         {
             printf("Sorry entered rank (%s) is invalid. Try again.\n", tempStudent.id);
             id = 0;
