@@ -257,7 +257,6 @@ void printinvoice(struct faculty * list2, struct student * list) {
     toUpperCase(studentID);
 
     while (current != NULL) {
-        printf("%s", current->id);
         if (strcmp(current->id, studentID) == 0) {
             break;
         }
@@ -295,7 +294,6 @@ void printfacultyinfo(struct faculty * list, struct student * list2) {
     toUpperCase(facultyID);
 
     while (current != NULL) {
-        printf("%s", current->id);
         if (strcmp(current->id, facultyID) == 0) {
             break; 
         }
